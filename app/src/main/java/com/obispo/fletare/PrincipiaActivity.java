@@ -13,10 +13,11 @@ public class PrincipiaActivity extends AppCompatActivity implements AdapterView.
     MiAyudanteSQLite Carlo;
 
     Spinner SPN11, SPN12;
-    TextView TXV11, TXV12;
+    TextView TXV11, TXV12, TXV13;
     Cursor Juan;
-    int carlitos =0;
+    int paso =0;
     long pedro=89;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class PrincipiaActivity extends AppCompatActivity implements AdapterView.
 
         TXV11=(TextView)findViewById(R.id.TXV11);
         TXV12=(TextView)findViewById(R.id.TXV12);
+        TXV13=(TextView)findViewById(R.id.TXV13);
         SPN11=(Spinner)findViewById(R.id.SPN11) ;
         SPN12=(Spinner)findViewById(R.id.SPN12) ;
 
@@ -45,22 +47,40 @@ public class PrincipiaActivity extends AppCompatActivity implements AdapterView.
      // pedro = Carlo.CuantosHay();
     //     acoplame.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SPN11.setAdapter(acoplame);
+        SPN11.setSelection(9);
        // String carrusel= String.valueOf(pedro);
         Carlo.CerrarBase();
 
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
 
-        Carlo.AbrirBase();
+        switch (adapterView.getId()){
+            case R.id.SPN11:
+                if (paso ==0 &&  i!=9){
+                    Carlo.AbrirBase();
+                    String gustavo = String.valueOf(id);
+                    Cursor frio = Carlo.PueblaCiudadesDeDepartamento(gustavo);
+                    SimpleCursorAdapter acoplamos = new SimpleCursorAdapter(this, R.layout.venturi, frio, new String[]{"_id", "Ciudad"}, new int[]{R.id.venturi1, R.id.venturi2});
+                    SPN11.setAdapter(acoplamos);
+                    SPN11.setSelection(0);
+                    Carlo.CerrarBase();
+                    paso++;
+                }
+                if (paso >0){
+                    Carlo.AbrirBase();
+                    String gustavin = String.valueOf(id);
+                    Cursor carrete = Carlo.BuscaCiudad(gustavin);
+                    carrete.moveToFirst();
 
-        String gustavo =String.valueOf(l);
+                    TXV13.setText(carrete.getString(2));
+                    TXV13.setVisibility(View.VISIBLE);
+                    Carlo.CerrarBase();
 
-        Cursor frio = Carlo.PueblaCiudadesDeDepartamento(gustavo);
-        SimpleCursorAdapter acoplamos = new SimpleCursorAdapter(this, R.layout.venturi,  frio, new String[] {"_id","Ciudad"}, new int[] {R.id.venturi1,R.id.venturi2} );
-        SPN12.setAdapter(acoplamos);
-        Carlo.CerrarBase();
+                }
+            break;
+        }
     }
 
     @Override

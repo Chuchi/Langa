@@ -24,7 +24,7 @@
         android:layout_below="@+id/TXV11"
         android:layout_marginTop="5dp"
         android:prompt="@string/provincia_prompt"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dialog"/>
 
     <TextView
         android:id="@+id/TXV12"
@@ -44,5 +44,15 @@
         android:layout_marginTop="5dp"
         android:prompt="@string/localidad_prompt"
         android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/TXV13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/TXV11"
+        android:layout_below="@+id/SPN12"
+        android:layout_marginTop="22dp"
+        android:text="TextView"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

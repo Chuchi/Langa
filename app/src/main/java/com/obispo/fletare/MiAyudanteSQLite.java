@@ -21,7 +21,7 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     Context ctx;
 
     public MiAyudanteSQLite(Context context) {
-        super(context,"Propia.db",null, 2);
+        super(context,"Propia.db",null, 3);
 
         ctx=context;
     }
@@ -116,9 +116,14 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
         return  basecita.rawQuery("select  IdDepartamento as _id, Departamento, Vario1 from Departamentos", null);
     }
 
-    public Cursor PueblaCiudadesDeDepartamento (String iden){
+    public Cursor PueblaCiudadesDeDepartamento (String iddepart){
 
-        String misql=" Select IdCiudad as _id, Ciudad from Ciudades where IdDepart =" +iden;
+        String misql=" Select IdCiudad as _id, Ciudad from Ciudades where IdDepart =" +iddepart;
+        return  basecita.rawQuery(misql, null);
+    }
+    public Cursor BuscaCiudad(String idciudad){
+
+        String misql=" Select * from Ciudades where IdCiudad =" +idciudad;
         return  basecita.rawQuery(misql, null);
     }
 
