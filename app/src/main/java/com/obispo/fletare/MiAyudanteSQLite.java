@@ -15,7 +15,7 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     Context ctx;
 
     public MiAyudanteSQLite(Context context) {
-        super(context,"Propia",null, 15);
+        super(context,"Propia.db",null, 16);
 
         ctx=context;
     }
@@ -91,9 +91,8 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
 
             ContentValues valores = new ContentValues();
             valores.put("Departamento",departamento);
-            basecita.insert("Departamentos.sql",null,valores);
 
-            return   basecita.insert("Departamentos.sql",null,valores);
+            return   basecita.insert("Departamentos",null,valores);
         }
 
         public int UltimoRegistro() {
@@ -107,4 +106,22 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
 
             return numeroII;
         }
+
+        public void metida(){
+
+            ayucodeBase.AbrirBase();
+            basecita.execSQL("INSERT INTO Departamentos (Departamento) Values ('Santa Cruz');INSERT INTO Departamentos (Departamento) Values ('La Paz');INSERT INTO Departamentos (Departamento) Values ('Cochabamba');INSERT INTO Departamentos (Departamento) Values ('Potosi'); INSERT INTO Departamentos (Departamento) Values ('Oruro');INSERT INTO Departamentos (Departamento) Values ('Chuquisaca');INSERT INTO Departamentos (Departamento) Values ('Beni');INSERT INTO Departamentos (Departamento) Values ('Pando'); INSERT INTO Departamentos (Departamento) Values ('Tarija');");
+            basecita.close();
+
+        }
+
+    public long CuantosHay (){
+
+        long ahora = 0;
+        Cursor melia= basecita.rawQuery("select count(IdDepartamento) from Departamentos", null);
+        melia.moveToFirst();
+        ahora = Long.parseLong(melia.getString(0));
+        return ahora;
+
+    }
 }
