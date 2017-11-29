@@ -5,6 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by oficina on 28/11/2017.
@@ -15,7 +21,7 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     Context ctx;
 
     public MiAyudanteSQLite(Context context) {
-        super(context,"Propia.db",null, 16);
+        super(context,"Propia.db",null, 6);
 
         ctx=context;
     }
@@ -23,10 +29,10 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase BD) {
 
-        BD.execSQL("CREATE TABLE  Departamentos (IdDepartamento INTEGER Primary Key autoincrement, Departamento Text not null ,Vario1 Text)");
+        BD.execSQL("CREATE TABLE Departamentos (IdDepartamento INTEGER Primary Key autoincrement, Departamento Text not null , Vario1 text )");
      BD.execSQL("CREATE TABLE  Ciudades (IdCiudad INTEGER Primary Key autoincrement,IdDepart INTEGER NOT NULL, Ciudad Text not null, Latitud Double , Longuitud Double , Vario1 Text, Vario2 Text)");
 
-/*
+
         InputStream is = null;
         try {
             is = ctx.getAssets().open("Departamentos.sql");
@@ -52,10 +58,9 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
                     // Muestra log
                 }
             }
-
         }
 
-*/
+
     }
 
     @Override
@@ -109,9 +114,10 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
 
         public void metida(){
 
-            ayucodeBase.AbrirBase();
-            basecita.execSQL("INSERT INTO Departamentos (Departamento) Values ('Santa Cruz');INSERT INTO Departamentos (Departamento) Values ('La Paz');INSERT INTO Departamentos (Departamento) Values ('Cochabamba');INSERT INTO Departamentos (Departamento) Values ('Potosi'); INSERT INTO Departamentos (Departamento) Values ('Oruro');INSERT INTO Departamentos (Departamento) Values ('Chuquisaca');INSERT INTO Departamentos (Departamento) Values ('Beni');INSERT INTO Departamentos (Departamento) Values ('Pando'); INSERT INTO Departamentos (Departamento) Values ('Tarija');");
-            basecita.close();
+
+            basecita.execSQL("INSERT INTO Departamentos (Departamento) Values ('La Paz');");
+
+
 
         }
 
@@ -121,6 +127,7 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
         Cursor melia= basecita.rawQuery("select count(IdDepartamento) from Departamentos", null);
         melia.moveToFirst();
         ahora = Long.parseLong(melia.getString(0));
+
         return ahora;
 
     }
