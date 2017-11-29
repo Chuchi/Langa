@@ -8,35 +8,41 @@
     tools:context="com.obispo.fletare.PrincipiaActivity">
 
     <TextView
-        android:id="@+id/tv_provincia"
+        android:id="@+id/TXV11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/sp_provincia"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginTop="71dp"
-        android:text='"lopepe"'/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:text="@string/Departamento"/>
 
     <Spinner
-        android:id="@+id/sp_provincia"
+        android:id="@+id/SPN11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TXV11"
+        android:layout_below="@+id/TXV11"
+        android:layout_marginTop="5dp"
         android:prompt="@string/provincia_prompt"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"/>
 
     <TextView
-        android:id="@+id/tv_localidad"
+        android:id="@+id/TXV12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/localidad" />
+        android:layout_alignStart="@+id/TXV11"
+        android:layout_below="@+id/SPN11"
+        android:layout_marginTop="2dp"
+        android:text="@string/localidad"/>
 
     <Spinner
-        android:id="@+id/sp_localidad"
+        android:id="@+id/SPN12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TXV11"
+        android:layout_below="@+id/TXV12"
+        android:layout_marginTop="5dp"
         android:prompt="@string/localidad_prompt"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"/>
 
 </RelativeLayout>

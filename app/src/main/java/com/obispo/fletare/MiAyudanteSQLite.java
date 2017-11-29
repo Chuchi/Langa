@@ -21,7 +21,7 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     Context ctx;
 
     public MiAyudanteSQLite(Context context) {
-        super(context,"Propia.db",null, 6);
+        super(context,"Propia.db",null, 2);
 
         ctx=context;
     }
@@ -30,36 +30,15 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase BD) {
 
         BD.execSQL("CREATE TABLE Departamentos (IdDepartamento INTEGER Primary Key autoincrement, Departamento Text not null , Vario1 text )");
-     BD.execSQL("CREATE TABLE  Ciudades (IdCiudad INTEGER Primary Key autoincrement,IdDepart INTEGER NOT NULL, Ciudad Text not null, Latitud Double , Longuitud Double , Vario1 Text, Vario2 Text)");
+     BD.execSQL("CREATE TABLE  Ciudades (IdCiudad INTEGER Primary Key autoincrement,IdDepart INTEGER NOT NULL, Ciudad Text not null, Latitud Double not null , Longuitud Double not null , Vario1 Text, Vario2 Text)");
 
+// Busca datos de los departamentos en el fichero asset Departamentos.sql y los introduce en la tabla Departamentos
 
-        InputStream is = null;
-        try {
-            is = ctx.getAssets().open("Departamentos.sql");
-            if (is != null) {
-                BD.beginTransaction();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                String line = reader.readLine();
-                while (!TextUtils.isEmpty(line)) {
-                    BD.execSQL(line);
-                    line = reader.readLine();
-                }
-                BD.setTransactionSuccessful();
+    PoblarTablasInicio(BD,"Departamentos.sql");
 
-            }
-        } catch (Exception ex) {
-            // Muestra log
-        } finally {
-            BD.endTransaction();
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    // Muestra log
-                }
-            }
-        }
+// Busca datos de los departamentos en el fichero asset Ciudades.sql y los introduce en la tabla Ciudades
 
+    PoblarTablasInicio(BD,"Ciudades.sql");
 
     }
 
@@ -124,11 +103,51 @@ public class MiAyudanteSQLite extends SQLiteOpenHelper{
     public long CuantosHay (){
 
         long ahora = 0;
-        Cursor melia= basecita.rawQuery("select count(IdDepartamento) from Departamentos", null);
+        Cursor melia= basecita.rawQuery("select count(Ciudad) from Ciudades", null);
         melia.moveToFirst();
         ahora = Long.parseLong(melia.getString(0));
 
         return ahora;
 
+    }
+
+    public Cursor PueblaDepartamentos (){
+
+        return  basecita.rawQuery("select  IdDepartamento as _id, Departamento, Vario1 from Departamentos", null);
+    }
+
+    public Cursor PueblaCiudadesDeDepartamento (String iden){
+
+        String misql=" Select IdCiudad as _id, Ciudad from Ciudades where IdDepart =" +iden;
+        return  basecita.rawQuery(misql, null);
+    }
+
+    public void PoblarTablasInicio(SQLiteDatabase BaseDatos , String NombreFicheroAsset){
+        InputStream is = null;
+        try {
+            is = ctx.getAssets().open(NombreFicheroAsset);
+            if (is != null) {
+                BaseDatos.beginTransaction();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String line = reader.readLine();
+                while (!TextUtils.isEmpty(line)) {
+                    BaseDatos.execSQL(line);
+                    line = reader.readLine();
+                }
+                BaseDatos.setTransactionSuccessful();
+
+            }
+        } catch (Exception ex) {
+            // Muestra log
+        } finally {
+            BaseDatos.endTransaction();
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    // Muestra log
+                }
+            }
+        }
     }
 }
