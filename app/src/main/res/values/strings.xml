@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Fletare</string>
     <string name="Departamento">Departamento</string>
+    <string name="Origen">Origen</string>
+    <string name="Destino">Destino</string>
     <string name="localidad">Localidad</string>
     <string name="provincia_prompt">Elija Departamento</string>
     <string name="localidad_prompt">Elija una localidad</string>

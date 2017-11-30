@@ -2,10 +2,10 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.obispo.fletare.PrincipiaActivity">
+
+>
 
     <TextView
         android:id="@+id/TXV11"
@@ -14,45 +14,37 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="7dp"
-        android:text="@string/Departamento"/>
+        android:text="@string/Departamento"
+        android:visibility="invisible"/>
 
-    <Spinner
-        android:id="@+id/SPN11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/TXV11"
-        android:layout_below="@+id/TXV11"
-        android:layout_marginTop="5dp"
-        android:prompt="@string/provincia_prompt"
-        android:spinnerMode="dialog"/>
 
     <TextView
         android:id="@+id/TXV12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/TXV11"
-        android:layout_below="@+id/SPN11"
-        android:layout_marginTop="2dp"
-        android:text="@string/localidad"/>
 
-    <Spinner
-        android:id="@+id/SPN12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/TXV11"
-        android:layout_below="@+id/TXV12"
-        android:layout_marginTop="5dp"
-        android:prompt="@string/localidad_prompt"
-        android:spinnerMode="dropdown"/>
+        android:layout_marginTop="2dp"
+        android:text="@string/localidad"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/TXV13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/TXV11"
-        android:layout_below="@+id/SPN12"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="3dp"
+        android:elevation="6dp"
         android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:visibility="invisible"/>
+
+    <ImageButton
+        android:id="@+id/IMBTN10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TXV12"
+        android:layout_below="@+id/TXV11"
+        app:srcCompat="@drawable/origen_blue"/>
 
 </RelativeLayout>
