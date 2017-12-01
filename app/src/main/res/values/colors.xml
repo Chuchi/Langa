@@ -6,4 +6,12 @@
     <color name="button_normal">#929392</color>
     <color name="button_pressed">#c0c1c0</color>
     <color name="dialog_divider">@android:color/black</color>
+    <color name="FletareAzul100">#011284</color>
+    <color name="FletareAzul75">#142bc6</color>
+    <color name="FletareAzul50">#919ffc</color>
+    <color name="FletareAzul25">#c4cbf7</color>
+    <color name="FletareAmarillo100">#fcf91c</color>
+    <color name="FletareAmarillo50">#faf884</color>
+    <color name="FletareAmarillo25">#f7f7d4</color>
+
 </resources>

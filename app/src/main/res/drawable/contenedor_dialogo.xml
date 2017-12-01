@@ -2,17 +2,17 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <!-- color de fondo -->
-    <solid android:color="@android:color/white" />
+    <solid android:color="@color/FletareAzul50" />
 
     <!-- curvatura de las esquinas -->
     <corners android:radius="10dp" />
 
     <!-- padding para dejar una separacin prudencial entre los elementos conetenidos y el borde -->
-    <padding android:left="8dp" android:top="4dp" android:right="8dp" android:bottom="8dp"/>
+    <padding />
 
     <!-- borde -->
     <stroke
-        android:width="30dp"
-        android:color="@android:color/darker_gray" />
+        android:width="5dp"
+        android:color="@color/FletareAzul75" />
 
 </shape>

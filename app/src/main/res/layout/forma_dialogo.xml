@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="@drawable/contenedor_dialogo"
               android:orientation="vertical">
 
 
@@ -9,12 +10,15 @@
         android:id="@+id/TXV99"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Elija un Departamento"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
+        android:background="@color/FletareAzul100"
+        android:paddingStart="5dp"
+        android:text="Elija Departamento"
+        android:textColor="@color/FletareAmarillo100"
+        android:textSize="25sp"
         android:textStyle="bold"/>
 
-    <ListView android:id="@+id/LV10"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"/>
+    <ListView
+        android:id="@+id/LV10"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 </LinearLayout>

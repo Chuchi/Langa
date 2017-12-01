@@ -88,7 +88,7 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.IMBTN10: // ImageButton ORIGEN
 
-                 final Dialog dialog = new Dialog(this);
+                 final Dialog dialog = new Dialog(this,R.style.Theme_Dialog_Translucent);
                     punteos =0;
                     CiudadOrigen = 0;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
