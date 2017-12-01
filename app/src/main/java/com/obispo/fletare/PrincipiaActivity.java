@@ -1,13 +1,14 @@
 package com.obispo.fletare;
 
 import android.app.Dialog;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -16,12 +17,35 @@ import android.widget.Toast;
 public class PrincipiaActivity extends AppCompatActivity implements View.OnClickListener {
     MiAyudanteSQLite Carlo;
 
-    TextView TXV11, TXV12, TXV13;
-    ImageButton IMBTN10;
+    TextView TXV11, TXV12, TXV13,TXV14 ;
+    Handler Chispea = new Handler();
     int punteos=0;  // Bandera de paso por los dialogs de ORIGEN
     long CiudadOrigen=0;
     Dialog customDialog = null;
+    Typeface TFAmaranthRegular ;
+    Typeface TFAmaranthBold;
+    boolean inter =false;
 
+Runnable anas = new Runnable() {
+    public void run() {
+        Flasheo();
+        if (inter) {
+            TXV14.setTextColor(getResources().getColor(R.color.FletareAmarillo25));
+        } else {
+            TXV14.setTextColor(getResources().getColor(R.color.FletareNaranjaCarmesi100));
+        }
+        Chispea.postDelayed(anas,500);
+}};
+    Runnable caifas = new Runnable() {
+        public void run() {
+            Flasheo();
+            if (inter) {
+                TXV12.setTextColor(getResources().getColor(R.color.FletareAmarillo25));
+            } else {
+                TXV12.setTextColor(getResources().getColor(R.color.FletareNaranjaCarmesi100));
+            }
+            Chispea.postDelayed(caifas,500);
+        }};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +54,25 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
         TXV11 = (TextView) findViewById(R.id.TXV11);
         TXV12 = (TextView) findViewById(R.id.TXV12);
         TXV13 = (TextView) findViewById(R.id.TXV13);
-         IMBTN10 = (ImageButton) findViewById(R.id.IMBTN10);
+        TXV14 = (TextView) findViewById(R.id.TXV14);
+            String Amaranth_Regular = "Vermut/Amaranth-Regular.ttf";
+        String Amaranth_Bold = "Vermut/Amaranth-Bold.ttf";
 
 
 
-        IMBTN10.setOnClickListener(this);
+
+        TFAmaranthRegular = Typeface.createFromAsset(getAssets(),Amaranth_Regular);
+        TFAmaranthBold= Typeface.createFromAsset(getAssets(),Amaranth_Bold);
+
+        TXV11.setTypeface(TFAmaranthRegular);
+        TXV12.setTypeface(TFAmaranthRegular);
+
+
+
+        TXV12.setOnClickListener(this);
         Carlo = new MiAyudanteSQLite(this);
         Carlo.AbrirBase();
-
+        Chispea.postDelayed(caifas,500);
     }
     public void mostrar(View view)
     {
@@ -86,8 +121,8 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
 
         switch (view.getId()){
 
-            case R.id.IMBTN10: // ImageButton ORIGEN
-
+            case R.id.TXV12: // ImageButton ORIGEN
+                Chispea.removeCallbacks(caifas);
                  final Dialog dialog = new Dialog(this,R.style.Theme_Dialog_Translucent);
                     punteos =0;
                     CiudadOrigen = 0;
@@ -106,11 +141,18 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
                             // Direcciona en el primer punteo
 
                             if (punteos >0) {
+
                                 String casino = String.valueOf(id);
                                 CiudadOrigen = id;
-                                //punteos=0;
-                                TXV13.setText(casino);
-                                TXV13.setVisibility(View.VISIBLE);
+                                Carlo.AbrirBase();
+
+                                TXV12.setVisibility(View.VISIBLE);
+                                TXV12.setText(Carlo.BuscaCiudad(casino));
+                                TXV12.setTypeface(TFAmaranthBold);
+                                TXV12.setTextColor(getResources().getColor(R.color.dialog_divider));
+                                Carlo.CerrarBase();
+                                TXV14.setVisibility(View.VISIBLE);
+                                Chispea.postDelayed(anas, 500);
                                 dialog.dismiss();
                             }
                             if (punteos ==0) {
@@ -118,7 +160,7 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
                                 Carlo.AbrirBase();
                                 SimpleCursorAdapter pepe = new SimpleCursorAdapter(view.getContext(), R.layout.venturi_doble, Carlo.PueblaCiudadesDeDepartamento(paulov),new String[]{"_id", "Ciudad"}, new int[]{0, R.id.venturi22});
                                 LV10.setAdapter(pepe);
-                                TXV99.setText("Elija una Ciudad");
+                                TXV99.setText("Elija Ciudad");
                                 punteos ++;
                                 Carlo.CerrarBase();
 
@@ -136,4 +178,13 @@ public class PrincipiaActivity extends AppCompatActivity implements View.OnClick
 
 
 }
+    //Disparo del Temporizador para el blinking del marker
+
+    public void  Flasheo(){
+
+        if(inter) {
+            inter = false;
+        }else {inter = true;  }
     }
+
+}

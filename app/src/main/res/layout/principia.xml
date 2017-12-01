@@ -5,47 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
->
+    android:background="@color/FletareAzul50">
 
     <TextView
         android:id="@+id/TXV11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="7dp"
-        android:text="@string/Departamento"
-        android:visibility="invisible"/>
-
+        android:layout_alignParentStart="true"
+        android:textColor="@color/FletareAmarillo25"
+        android:textSize="30sp"
+        android:text="@string/De"
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/TXV12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/TXV11"
 
-        android:layout_marginTop="2dp"
-        android:text="@string/localidad"
-        android:visibility="invisible"/>
-
+        android:layout_alignBottom="@+id/TXV11"
+        android:layout_marginStart="7dp"
+        android:layout_toEndOf="@+id/TXV11"
+        android:text="@string/Origen"
+        android:textColor="@color/FletareNaranjaCarmesi100"
+        android:textSize="30sp"/>
     <TextView
         android:id="@+id/TXV13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:elevation="6dp"
-        android:text="TextView"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:layout_below="@id/TXV11"
+        android:textColor="@color/FletareAmarillo25"
+        android:text="@string/A"
+        android:textSize="30sp"
         android:visibility="invisible"/>
 
-    <ImageButton
-        android:id="@+id/IMBTN10"
+    <TextView
+        android:id="@+id/TXV14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/TXV13"
         android:layout_alignStart="@+id/TXV12"
-        android:layout_below="@+id/TXV11"
-        app:srcCompat="@drawable/origen_blue"/>
+        android:layout_below="@+id/TXV12"
+        android:layout_toEndOf="@+id/TXV13"
+        android:text="@string/Destino"
+        android:textColor="@color/FletareNaranjaCarmesi100"
+        android:textSize="30sp"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/button"

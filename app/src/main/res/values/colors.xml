@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1aab07</color>
     <color name="button_normal">#929392</color>
     <color name="button_pressed">#c0c1c0</color>
     <color name="dialog_divider">@android:color/black</color>
@@ -13,5 +13,8 @@
     <color name="FletareAmarillo100">#fcf91c</color>
     <color name="FletareAmarillo50">#faf884</color>
     <color name="FletareAmarillo25">#f7f7d4</color>
+    <color name="FletareNaranjaCarmesi100">#f73c04</color>
+    <color name="FletareNaranjaCarmesi75">#fa7851</color>
+    <color name="FletareNaranjaCarmesi50">#fcbaa6</color>
 
 </resources>

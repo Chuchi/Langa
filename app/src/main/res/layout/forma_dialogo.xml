@@ -13,12 +13,14 @@
         android:background="@color/FletareAzul100"
         android:paddingStart="5dp"
         android:text="Elija Departamento"
-        android:textColor="@color/FletareAmarillo100"
+        android:textColor="@color/FletareNaranjaCarmesi50"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/LV10"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:divider="@color/button_pressed"
+        android:dividerHeight="0dp"/>
 </LinearLayout>

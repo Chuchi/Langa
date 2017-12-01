@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Fletare</string>
     <string name="Departamento">Departamento</string>
+    <string name="De">De:  </string>
+    <string name="A">A:  </string>
     <string name="Origen">Origen</string>
     <string name="Destino">Destino</string>
     <string name="localidad">Localidad</string>
