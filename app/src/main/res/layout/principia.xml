@@ -47,4 +47,14 @@
         android:layout_below="@+id/TXV11"
         app:srcCompat="@drawable/origen_blue"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IMBTN10"
+        android:layout_marginTop="106dp"
+        android:layout_toEndOf="@+id/IMBTN10"
+        android:onClick="mostrar"
+        android:text="Button"/>
+
 </RelativeLayout>
