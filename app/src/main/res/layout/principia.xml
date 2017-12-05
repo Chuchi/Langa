@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:text="@string/De"
         android:textColor="@color/FletareAmarillo25"
         android:textSize="30sp"
-        android:text="@string/De"
         android:visibility="visible"/>
 
     <TextView
@@ -43,23 +43,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignBottom="@+id/TXV13"
         android:layout_alignStart="@+id/TXV12"
         android:layout_below="@+id/TXV12"
-        android:layout_toEndOf="@+id/TXV13"
         android:text="@string/Destino"
         android:textColor="@color/FletareNaranjaCarmesi100"
         android:textSize="30sp"
         android:visibility="invisible"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BTN1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/IMBTN10"
-        android:layout_marginTop="106dp"
-        android:layout_toEndOf="@+id/IMBTN10"
-        android:onClick="mostrar"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/TXV13"
+        android:layout_marginTop="26dp"
+        android:onClick="enviafoto"
         android:text="Button"/>
+
+    <ImageView
+        android:id="@+id/IMV22"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignTop="@+id/BTN1"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@+id/TXV13"
+        />
+
+    <ImageView
+        android:id="@+id/IMV23"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="118dp"
+        android:layout_toEndOf="@+id/TXV14"
+        app:srcCompat="@android:drawable/arrow_up_float"/>
+
+    <Button
+        android:id="@+id/BTN2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/BTN1"
+        android:layout_marginEnd="14dp"
+        android:text="Button"/>
+
+    <WebView
+        android:id="@+id/WV10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/BTN1"/>
+
 
 </RelativeLayout>
